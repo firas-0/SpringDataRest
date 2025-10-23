@@ -1,8 +1,14 @@
-import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://localhost:8080/api",
-  auth: { username: "user", password: "pass" }
+import axios from "axios";
+const api = axios.create({ baseURL: "/api" }); // same origin via the proxy
+export default api;
+
+
+api.interceptors.request.use((cfg) => {
+  cfg.headers = cfg.headers || {};
+  // For GETs you can omit this since GET /api/** is permitAll now:
+  // cfg.headers.Authorization = BASIC;
+  return cfg;
 });
 
 export default api;

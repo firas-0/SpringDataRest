@@ -19,7 +19,7 @@ public class Proprietaire {
     @NonNull private String nom;
     @NonNull private String prenom;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "proprietaire")
+    @OneToMany(mappedBy = "proprietaire", cascade = CascadeType.ALL)
     @JsonIgnore // avoid infinite recursion (TP guidance)
     private List<Voiture> voitures;
 }

@@ -1,4 +1,3 @@
-// src/main/java/org/cours/config/SecurityConfig.java
 package org.cours.config;
 
 import org.springframework.context.annotation.Bean;
@@ -7,18 +6,39 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 public class SecurityConfig {
+
   @Bean
-  SecurityFilterChain filter(HttpSecurity http) throws Exception {
+  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     return http
       .csrf(csrf -> csrf.disable())
+      .cors(Customizer.withDefaults())
       .authorizeHttpRequests(auth -> auth
-        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-        .anyRequest().authenticated())
+        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+        .requestMatchers(HttpMethod.GET, "/api/voitures").permitAll()  // open GET list for dev
+        .anyRequest().authenticated()
+      )
       .httpBasic(Customizer.withDefaults())
       .build();
+  }
+
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration cfg = new CorsConfiguration();
+    cfg.setAllowedOrigins(List.of("http://localhost:3000"));
+    cfg.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
+    cfg.setAllowedHeaders(List.of("Authorization","Content-Type"));
+    cfg.setAllowCredentials(true);
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", cfg);
+    return source;
   }
 }
 

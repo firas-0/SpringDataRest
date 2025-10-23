@@ -1,5 +1,5 @@
 package org.cours.modele;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,7 +23,7 @@ public class Voiture {
     // TP later links ManyToOne to Proprietaire (then @JsonIgnore to avoid recursion)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "proprietaire")
-    @ToString.Exclude
+    @JsonIgnore 
     private Proprietaire proprietaire;
 }
 

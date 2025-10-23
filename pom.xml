@@ -79,6 +79,12 @@
 		  <groupId>org.springframework.boot</groupId>
 		  <artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
+		<!-- MariaDB driver -->
+		<dependency>
+		  <groupId>org.mariadb.jdbc</groupId>
+		  <artifactId>mariadb-java-client</artifactId>
+		  <scope>runtime</scope>
+		</dependency>
 
 		    <!-- (Switch to MariaDB later as in TP) -->
 		    <!--
