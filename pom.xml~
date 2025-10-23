@@ -69,16 +69,8 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		    <!-- (Switch to MariaDB later as in TP) -->
-		    <!--
-		    <dependency>
-		      <groupId>org.mariadb.jdbc</groupId>
-		      <artifactId>mariadb-java-client</artifactId>
-		      <scope>runtime</scope>
-		    </dependency>
-		    -->
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
