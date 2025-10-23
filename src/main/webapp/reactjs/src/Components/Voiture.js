@@ -50,7 +50,7 @@ export default class Voiture extends Component {
         prix: Number(this.state.prix)
       };
       await axios.post("http://localhost:8080/api/voitures", payload, {
-        auth: { username: "user", password: "YOUR_CONSOLE_PASSWORD_IF_SECURITY_ON" }
+        auth: { username: "user", password: "pass" }
       });
       this.setState({ show: true, toastBg: "success", toastMsg: "Voiture enregistrée avec succès." });
       setTimeout(() => this.setState({ show: false }), 3000);
