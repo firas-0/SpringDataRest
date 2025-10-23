@@ -5,4 +5,5 @@ org/cours/modele/Proprietaire.class
 org/cours/modele/ProprietaireRepo.class
 org/cours/modele/Voiture.class
 org/cours/config/RestCorsConfig.class
+org/cours/web/VoitureController$NotFoundException.class
 org/cours/config/SecurityConfig.class

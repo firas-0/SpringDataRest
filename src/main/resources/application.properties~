@@ -11,10 +11,10 @@ spring.application.name=SpringDataRest
 #spring.security.user.password=pass
 
 # ===== MariaDB (TP) =====
-spring.datasource.url=jdbc:mariadb://localhost:3306/compagnie
-spring.datasource.username=sbuser
-spring.datasource.password=sbpass
-spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+#spring.datasource.url=jdbc:mariadb://localhost:3306/compagnie
+#spring.datasource.username=sbuser
+#spring.datasource.password=sbpass
+#spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 
 # JPA schema generation (dev only – TP uses create-drop)
 spring.jpa.generate-ddl=true
@@ -43,7 +43,10 @@ spring.jpa.properties.hibernate.format_sql=true
 # CORS for React dev server
 # We'll also add @CrossOrigin on the controller.
 
-
+# actuator and prometheus: 
+management.endpoints.web.exposure.include=health,info,prometheus
+management.endpoint.prometheus.enabled=true
+management.metrics.export.prometheus.enabled=true
 
 
 
